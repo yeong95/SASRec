@@ -65,7 +65,7 @@ def evaluate(model, dataset, args, sess):
         item_idx = [test[u][0]]
         for _ in range(100):
             t = np.random.randint(1, itemnum + 1)
-            while t in rated: t = np.random.randint(1, itemnum + 1)
+            while t in rated: t = np.random.randint(1, itemnum + 1)  # choose items that they are not in train, valid set
             item_idx.append(t)
 
         predictions = -model.predict(sess, [u], [seq], item_idx)
